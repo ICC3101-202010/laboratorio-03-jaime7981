@@ -1,0 +1,7 @@
+C:\Users\jaime\Desktop\POO\Kornerchop\bin\Debug\Kornerchop.exe.config
+C:\Users\jaime\Desktop\POO\Kornerchop\bin\Debug\Kornerchop.exe
+C:\Users\jaime\Desktop\POO\Kornerchop\bin\Debug\Kornerchop.pdb
+C:\Users\jaime\Desktop\POO\Kornerchop\obj\Debug\Kornerchop.csprojAssemblyReference.cache
+C:\Users\jaime\Desktop\POO\Kornerchop\obj\Debug\Kornerchop.csproj.CoreCompileInputs.cache
+C:\Users\jaime\Desktop\POO\Kornerchop\obj\Debug\Kornerchop.exe
+C:\Users\jaime\Desktop\POO\Kornerchop\obj\Debug\Kornerchop.pdb
