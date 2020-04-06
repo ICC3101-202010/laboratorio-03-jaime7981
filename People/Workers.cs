@@ -21,8 +21,8 @@ namespace Kornerchop.Workers
             this.typeofworker = "No worker";
     }
 
-        public Worker(string typeofworker, string fisrtname, string lastname, string nationality, string rut, string birthdate, string gender) 
-            : base(fisrtname, lastname, nationality, rut, birthdate, gender)
+        public Worker(string typeofworker, string fisrtname, string lastname, string nationality, string rut, string birthdate, string gender, int personid) 
+               : base(fisrtname, lastname, nationality, rut, birthdate, gender, personid)
         {
             this.SetPosition(typeofworker);
         }
@@ -56,6 +56,10 @@ namespace Kornerchop.Workers
                         wage = 620000;
                         workinghour = "11 AM - 4PM";
                         typeofworker = "Manager";
+                    }
+                    else
+                    {
+                        Console.WriteLine("This is not a working position");
                     }
                 }
             }

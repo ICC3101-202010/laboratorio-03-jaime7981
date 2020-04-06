@@ -6,11 +6,28 @@ using System.Threading.Tasks;
 
 namespace Kornerchop.Workers
 {
-    class Clients : Person
+    class Client : Person
     {
 
+        private string[] ShopingCart = new string[20];
 
-        public Clients()
+        public Client()
+        {
+
+        }
+
+        public Client(string firstname, string lastname, string nationality, string rut, string birthdate, string gender, int personid) 
+                : base(firstname, lastname, nationality, rut, birthdate, gender, personid)
+        {
+
+        }
+
+        public void AddToShopingCart(string Productname, string brand, int stock)
+        {
+
+        }
+
+        public void ShowShopingCart()
         {
 
         }
