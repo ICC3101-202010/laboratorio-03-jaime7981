@@ -32,8 +32,15 @@ namespace Kornerchop
 
             Worker anothermanager = new Worker(testtype, testname, testlastname, testnationality, testrut, testbirthdate, testgender, testpersonid);
             Worker thecashier = new Worker("Cashier", "John", "Smith", "USA", "201637856", "10/03/92", "male", testpersonid);
+            workerList.Add(anothermanager);
+            workercounter++;
+            workerList.Add(thecashier);
+            workercounter++;
 
             Client theclient = new Client("Roberto", "Perez", "Chile", "20874693k", "05/09/98", "male", 11223344);
+            clientList.Add(theclient);
+            clientcounter++;
+            
 
             string testproductname = "Pisco";
             string testbrand = "Mistral";
@@ -42,6 +49,9 @@ namespace Kornerchop
             int testid = 102030;
 
             Product piscomistral = new Product(testproductname,testbrand, testvalue, teststock, testid);
+            productList.Add(piscomistral);
+            productcounter++;
+
 
 
             while (true)
@@ -56,14 +66,23 @@ namespace Kornerchop
 
                     if (var == "Info")
                     {
-                        Console.WriteLine("Info Manager... \n");
-                        anothermanager.PersonInfo(anothermanager.GetWage(), anothermanager.GetPosition(), anothermanager.GetWorkingHour());
-                        thecashier.PersonInfo(thecashier.GetWage(), thecashier.GetPosition(), thecashier.GetWorkingHour());
+                        Console.WriteLine("Workers info \n");
+                        foreach (Worker subject in workerList)
+                        {
+                            subject.PersonInfo(subject.GetWage(), subject.GetPosition(), subject.GetWorkingHour());
+                        }
+                        Console.WriteLine("\n Clients info \n");
+                        foreach (Client subject in clientList)
+                        {
+                            subject.PersonInfo();
+                        }
                     }
-                    if (var == "ChangeProffesion")
+
+                    if (var == "ChangeProffesion") //implement change position by id
                     {
-                        thecashier.SetPosition("Manager");
+                        workerList[0].SetPosition("Manager");
                     }
+
                     if (var == "NewWorker")
                     {
                         Console.WriteLine("Working position: (Manager / Cashier / Maintenance / Supervisor");
@@ -78,7 +97,9 @@ namespace Kornerchop
                                                       Console.ReadLine(), Console.ReadLine(), Console.ReadLine(), Int32.Parse(Console.ReadLine()));
                         workerList.Add(addworker);
                         workerList[workercounter].PersonInfo(addworker.GetWage(), addworker.GetPosition(), addworker.GetWorkingHour());
+                        workercounter++;
                     }
+
                     if (var == "NewClient")
                     {
                         Console.WriteLine("Name:");
@@ -91,8 +112,8 @@ namespace Kornerchop
                         Client addclient = new Client(Console.ReadLine(), Console.ReadLine(), Console.ReadLine(),
                                                       Console.ReadLine(), Console.ReadLine(), Console.ReadLine(), Int32.Parse(Console.ReadLine()));
                         clientList.Add(addclient);
-                        workerList[clientcounter].PersonInfo();
-
+                        clientList[clientcounter].PersonInfo();
+                        clientcounter++;
                     }
                 }
 
@@ -100,10 +121,15 @@ namespace Kornerchop
                 {
                     Console.WriteLine("\n WatchProducts / CreateProducts \n");
                     var = Console.ReadLine();
+
                     if (var == "WatchProducts")
                     {
-                        piscomistral.ProductInfo();
+                        foreach (Product item in productList)
+                        {
+                            item.ProductInfo();
+                        }
                     }
+
                     if (var == "CreateProducts")
                     {
                         Console.WriteLine("Name:");
@@ -113,35 +139,41 @@ namespace Kornerchop
                         Console.WriteLine("ID: (int)");
                         Product addproduct = new Product(Console.ReadLine(), Console.ReadLine(), Int32.Parse(Console.ReadLine()), Int32.Parse(Console.ReadLine()), Int32.Parse(Console.ReadLine()));
                         productList.Add(addproduct);
-                        workerList[clientcounter].PersonInfo();
+                        productList[productcounter].ProductInfo();
+                        productcounter++;
                     }
                 }
 
                 if (var == "Client") //ask for id
                 {
-                    Console.WriteLine("\n ShopingCart / AddProduct / ClientInfo \n");
+                    Console.WriteLine("\n ShopingCart / ClientInfo \n");
                     var = Console.ReadLine();
+
                     if (var == "Shoping Cart")
                     {
-                        Console.WriteLine("\n ShowCart / Buy \n");
+                        Console.WriteLine("\n ShowCart / AddProduct / Buy \n");
                         var = Console.ReadLine();
+
                         if (var == "ShowCart")
                         {  
                             piscomistral.ProductInfo();
                         }
+
+                        if (var == "AddProduct")
+                        {
+                            Console.WriteLine("Adding Product...");
+                        }
+
                         if (var == "Buy")
                         {
                             Console.WriteLine("Buying...");
                         }
                     }
-                    if (var == "AddProduct")
-                    {
-                        Console.WriteLine("Adding Product...");
-                    }
-                    if (var == "ClientInfo")
+
+                    if (var == "ClientInfo") //show info by id
                     {
                         Console.WriteLine("Client info...");
-                        theclient.PersonInfo();
+                        clientList[0].PersonInfo();
                     }
                 }
 

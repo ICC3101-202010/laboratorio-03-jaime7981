@@ -29,39 +29,29 @@ namespace Kornerchop.Workers
 
         public void SetPosition(string workertype)
         {
-            for (int i = 0; i < WorkerType.Length; i++)
-            {
-                if (WorkerType[i] == workertype)
-                {
-                    if (workertype == "Manager")
+            if (workertype == "Manager")
                     {
                         wage = 2000000;
                         workinghour = "Art. 22: no working schedule";
                         typeofworker = "Manager";
                     }
-                    if (workertype == "Cashier")
+            if (workertype == "Cashier")
                     {
                         wage = 400000;
                         workinghour = "8 AM - 8PM";
                         typeofworker = "Cashier";
                     }
-                    if (workertype == "Maintenance")
+            if (workertype == "Maintenance")
                     {
                         wage = 340000;
                         workinghour = "8 AM - 8PM";
                         typeofworker = "Manager";
                     }
-                    if (workertype == "Supervisor")
-                    {
+            if (workertype == "Supervisor")
+            {
                         wage = 620000;
                         workinghour = "11 AM - 4PM";
                         typeofworker = "Manager";
-                    }
-                    else
-                    {
-                        Console.WriteLine("This is not a working position");
-                    }
-                }
             }
         }
 
