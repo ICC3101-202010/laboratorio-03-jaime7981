@@ -49,13 +49,18 @@ namespace Kornerchop.Workers
         public void PersonInfo()
         {
             Console.WriteLine("\n Name: " + firstname + "\n Lastname: " + lastname + "\n Nationality: " + nationality
-                + "\n RUT: " + rut + "\n Birth Date: " + birthdate + "\n Gender: " + gender + "\n Wage: " + "\n ID: " + personid + "\n");
+                + "\n RUT: " + rut + "\n Birth Date: " + birthdate + "\n Gender: " + gender + "\n ID: " + personid + "\n");
         }
 
         public void PersonInfo(int wagevalue, string possition, string workinghour)
         {
             Console.WriteLine("\n Name: " + firstname + "\n Lastname: " + lastname + "\n Nationality: " + nationality 
                 + "\n RUT: " + rut + "\n Birth Date: " + birthdate + "\n Gender: " + gender + "\n Wage: " + wagevalue + "\n Position: " + possition + "\n Working Hour: " +  workinghour + "\n ID: " + personid + "\n");
+        }
+
+        public int GetPersonId()
+        {
+            return personid;
         }
 
     }

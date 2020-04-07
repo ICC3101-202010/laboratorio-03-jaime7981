@@ -19,8 +19,38 @@ namespace Kornerchop
             List<Client> clientList = new List<Client> { };
             int clientcounter = 0;
 
-            string var;
+            List<string> names = new List<string> { "Pablo", "Jaime", "Diego", "Damian" };
+            List<string> lastNames = new List<string> { "Perez", "Zurita", "Fernandez", "Bustos" };
+            List<string> nacionality = new List<string> { "Peru", "Chile", "Usa", "Spain" };
+            List<string> birthdate = new List<string> { "20/10/99", "02/03/82", "07/05/68", "30/11/03" };
+            List<string> gender = new List<string> { "male", "female", "animal", "other" };
+            List<string> rut = new List<string> { "2035646", "20646546", "1902656", "28920654" };
+            List<string> roles = new List<string> { "Manager", "Cashier", "Maintenance", "Supervisor" };
 
+        string var;
+
+            int RandomNumber(int min, int max)
+            {
+                Random random = new Random();
+                return random.Next(min, max);
+            }
+
+            for (int i = 0; i <= 15; i++) //Client
+            {
+
+            }
+
+            for (int i = 0; i <= 7; i++) //Workers
+            {
+
+            }
+
+            for (int i = 0; i <= 30; i++) //Products
+            {
+
+            }
+
+            //start test subjects
             string testname = "Jaime";
             string testlastname = "Fernandez";
             string testnationality = "Chile";
@@ -38,15 +68,19 @@ namespace Kornerchop
             workercounter++;
 
             Client theclient = new Client("Roberto", "Perez", "Chile", "20874693k", "05/09/98", "male", 11223344);
+            Client theclient2 = new Client("Robert", "Rez", "Chile", "20874693k", "05/09/98", "male", 1122);
             clientList.Add(theclient);
+            clientList.Add(theclient2);
             clientcounter++;
-            
+            clientcounter++;
+
 
             string testproductname = "Pisco";
             string testbrand = "Mistral";
             int testvalue = 5200;
             int teststock = 10;
             int testid = 102030;
+            //end test subjects
 
             Product piscomistral = new Product(testproductname,testbrand, testvalue, teststock, testid);
             productList.Add(piscomistral);
@@ -78,9 +112,24 @@ namespace Kornerchop
                         }
                     }
 
-                    if (var == "ChangeProffesion") //implement change position by id
+                    if (var == "ChangeProffesion")
                     {
-                        workerList[0].SetPosition("Manager");
+                        int workeridholder = 0;
+                        Console.WriteLine("\n Worker ID: \n");
+                        var = Console.ReadLine();
+
+                        foreach (Worker actualworker in workerList)
+                        {
+                            if (actualworker.GetPersonId() == Int32.Parse(var))
+                            {
+                                Console.WriteLine("\n New Working Position: ( Manager / Cashier / Maintenance / Supervisor )\n");
+                                var = Console.ReadLine();
+
+                                workerList[workeridholder].SetPosition(var);
+                                break;
+                            }
+                            workeridholder++;
+                        }
                     }
 
                     if (var == "NewWorker")
@@ -144,36 +193,87 @@ namespace Kornerchop
                     }
                 }
 
-                if (var == "Client") //ask for id
+                if (var == "Client")
                 {
-                    Console.WriteLine("\n ShopingCart / ClientInfo \n");
+                    int clientidholder = 0;
+                    Console.WriteLine("\n Client ID: \n");
                     var = Console.ReadLine();
 
-                    if (var == "Shoping Cart")
+                    foreach (Client actualclient in clientList)
                     {
-                        Console.WriteLine("\n ShowCart / AddProduct / Buy \n");
-                        var = Console.ReadLine();
-
-                        if (var == "ShowCart")
-                        {  
-                            piscomistral.ProductInfo();
-                        }
-
-                        if (var == "AddProduct")
+                        if (actualclient.GetPersonId() == Int32.Parse(var))
                         {
-                            Console.WriteLine("Adding Product...");
+                            break;
                         }
-
-                        if (var == "Buy")
-                        {
-                            Console.WriteLine("Buying...");
-                        }
+                        clientidholder++;
                     }
 
-                    if (var == "ClientInfo") //show info by id
+                    if (clientidholder < clientcounter)
                     {
-                        Console.WriteLine("Client info...");
-                        clientList[0].PersonInfo();
+                        Console.WriteLine("\n ShoppingCart / ClientInfo \n");
+                        var = Console.ReadLine();
+
+                        if (var == "ShoppingCart")
+                        {
+                            Console.WriteLine("\n ShowCart / AddProduct / RemoveProduct / Buy \n");
+                            var = Console.ReadLine();
+
+                            if (var == "ShowCart")
+                            {
+                                foreach (Product a in productList)
+                                {
+                                    if (a.GetId() == clientList[clientidholder].ShowShopingCart())
+                                    {
+                                        a.ProductInfo();
+                                    }
+                                }
+                            }
+
+                            if (var == "AddProduct")
+                            {
+                                Console.WriteLine("Choose product id");
+                                var = Console.ReadLine();
+                                foreach (Product item in productList)
+                                {
+                                    if (Int32.Parse(var) == item.GetId())
+                                    {
+                                        clientList[clientidholder].AddToShopingCart(item.GetId());
+                                    }
+                                }
+                            }
+
+                            if (var == "RemoveProduct")
+                            {
+                                Console.WriteLine("Choose product id");
+                                var = Console.ReadLine();
+                                foreach (Product item in productList)
+                                {
+                                    if (Int32.Parse(var) == item.GetId())
+                                    {
+                                        clientList[clientidholder].RemoveFromShopingCart(item.GetId());
+                                    }
+                                }
+                            }
+
+                            if (var == "Buy")
+                            {
+                                int totalvalue = 0;
+                                foreach (Product a in productList)
+                                {
+                                    if (a.GetId() == clientList[clientidholder].ShowShopingCart())
+                                    {
+                                        totalvalue = totalvalue + a.GetValue();
+                                    }
+                                }
+                                clientList[clientidholder].PersonInfo();
+                                Console.WriteLine("You have Spent: $" + totalvalue);
+                            }
+                        }
+
+                        if (var == "ClientInfo")
+                        {
+                            clientList[clientidholder].PersonInfo();
+                        }
                     }
                 }
 

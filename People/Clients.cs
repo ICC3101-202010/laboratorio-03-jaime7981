@@ -9,7 +9,7 @@ namespace Kornerchop.Workers
     class Client : Person
     {
 
-        private string[] ShopingCart = new string[20];
+        public List<int> shopingCart = new List<int> { };
 
         public Client()
         {
@@ -22,14 +22,23 @@ namespace Kornerchop.Workers
 
         }
 
-        public void AddToShopingCart(string Productname, string brand, int stock)
+        public void AddToShopingCart(int id)
         {
-
+            shopingCart.Add(id);
         }
 
-        public void ShowShopingCart()
+        public void RemoveFromShopingCart(int id)
         {
+            shopingCart.Remove(id);
+        }
 
+        public int ShowShopingCart()
+        {
+            foreach (int itemid in shopingCart)
+            {
+                return itemid;
+            }
+            return 0;
         }
     }
 }

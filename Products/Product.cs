@@ -15,9 +15,6 @@ namespace Kornerchop.Products
         private int stock;
         private int id;
 
-        private int[] productsId = new int[100];
-        private int productidcouter = 0;
-
         public Product()
         {
 
@@ -32,17 +29,7 @@ namespace Kornerchop.Products
                 this.value = value;
                 this.stock = stock;
             }
-            for (int i = 0; i < productsId.Length; i++)
-            {
-                if (productsId[i] == id)
-                {
-                    this.id = 00000;
-                    break;
-                }
-                this.id = id;
-            }
-            productsId[productidcouter] = id;
-            productidcouter++;
+            this.id = id;
         }
 
         public string ProductInfo()
@@ -66,17 +53,17 @@ namespace Kornerchop.Products
             return stock;
         }
 
-        public string GetProductName(string name)
+        public string GetProductName()
         {
             return name;
         }
 
-        public int GetValue(int value)
+        public int GetValue()
         {
             return value;
         }
 
-        public int GetId(int value)
+        public int GetId()
         {
             return id;
         }
